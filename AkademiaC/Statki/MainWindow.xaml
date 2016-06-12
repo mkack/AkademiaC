@@ -1,0 +1,29 @@
+﻿<Window x:Class="Statki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Statki"
+        xmlns:view="clr-namespace:Statki.View"
+        Title="{StaticResource AppTitle}" SizeToContent="WidthAndHeight" Icon="Ikona.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:Opcje.NewGame}"
+                    Executed="ExecutedNowaGra" />
+        <CommandBinding Command="{x:Static local:Opcje.AutomatedGame}"
+                    Executed="ExecutedGraAutomatyczna" />
+        <CommandBinding Command="{x:Static local:Opcje.Exit}"
+                    Executed="ExecutedWyjscie" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+            <MenuItem Header="_Plik">
+                <MenuItem Command="{x:Static local:Opcje.NewGame}"/>
+                <MenuItem Command="{x:Static local:Opcje.AutomatedGame}"/>
+                <Separator />
+                <MenuItem Command="{x:Static local:Opcje.Exit}" />                
+            </MenuItem>
+        </Menu>
+        <DockPanel>
+            <view:SiatkaMorze x:Name="siatkaGracza" DockPanel.Dock="Left"/>
+            <view:SiatkaMorze x:Name="siatkaKomputera" />
+        </DockPanel>
+    </DockPanel>
+</Window>
